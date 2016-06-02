@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<h2>{%print (categ) %}</h2>
+{% if session.logged_in %}
+<a href="add_item.html"> Add Item </a><br>
+{%endif%}
+<table border="1" style="width:100%">
+      <tr>
+      <th>ID</th>
+      <th>Name</th> 
+      <th>Description</th>
+      <th>Category</th>
+      </tr>
+      {% for item in Items: %}
+      {%if item[3]==categ%}
+      <tr>
+      <td> {% print item[0]%} </b></td>
+      <td> {% print item[1]%} </b></td>
+      <td> {% print item[2]%} </b></td>
+      <td> {% print item[3]%} </b></td><br>
+      </tr>
+      {% if session.logged_in %}
+      <tr>
+      <td colspan="4"><a href="edit_item.html?i={{item[0]}}" style="text-decoration:none;">Edit</a>    <a href="delete_item.html?i={{item[0]}}" style="text-decoration:none;">Delete</a></td>
+      </tr>
+      {%endif%}
+      {%endif%}
+      {%endfor%}
+</table>
+{% endblock %}

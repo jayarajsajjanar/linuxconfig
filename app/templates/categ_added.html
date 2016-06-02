@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+{% block content %}
+{% with messages1 = get_flashed_messages() %}
+        {% if messages1 %}
+          {% for message in messages1 %}
+            <h3>{{ message }}<h3>
+          {% endfor %}
+          
+        {% endif %}
+      {% endwith %}
+<h3> New Category Added!!!!</h3>
+
+{% endblock %}
