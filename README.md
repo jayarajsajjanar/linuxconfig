@@ -51,18 +51,18 @@ ntp apache2 python-setuptools libapache2-mod-wsgi git pip Flask postgresql postg
 	2. `chmod 600 ~/.ssh/udacity_key.rsa`
 	3. `ssh -i ~/.ssh/udacity_key.rsa root@52.40.16.108`
 2. New user was added and sudo permission was given. 
-	1.`adduser grader`
-	2.`visudo` 
-		1.root ALL=(ALL:ALL) ALL
-    	2.grader ALL=(ALL:ALL) ALL
+	1. `adduser grader`
+	2. `visudo` 
+		1. root ALL=(ALL:ALL) ALL
+    	2. grader ALL=(ALL:ALL) ALL
 3. To update all currently installed packages.
-	1.`sudo apt-get update`
-	2.`sudo apt-get upgrade`
+	1. `sudo apt-get update`
+	2. `sudo apt-get upgrade`
 4. To configure local time zone to UTC.
 	1.`sudo dpkg-reconfigure tzdata` select UTC.
 5. To change the SSH port from 22 to 2200.
-	1.On the server 
-	2.`sudo nano /etc/ssh/sshd_config` 
+	1. On the server 
+	2. `sudo nano /etc/ssh/sshd_config` 
 		1. Change Port 22 to Port 2200.`
 		2. Change `PermitRootLogin without-password` to `PermitRootLogin no`
 		3. Change `PasswordAuthentication no` to `PasswordAuthentication yes`. This allows access to the server via password.
