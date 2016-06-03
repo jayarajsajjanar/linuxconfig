@@ -26,7 +26,32 @@
     		2. Create a new user named catalog that has limited permissions to your catalog application database
     	i)Install git, clone and set up your Catalog App project (from your GitHub repository from earlier in the Nanodegree program) so that it functions correctly when visiting your server’s IP address in a browser. Remember to set this up appropriately so that your .git directory is not publicly accessible via a browser!
     	j)Your Amazon EC2 Instance's public URL will look something like this: http://ec2-XX-XX-XXX-XXX.us-west-2.compute.amazonaws.com/ where the X's are replaced with your instance's IP address. You can use this url when configuring third party authentication. Please note the the IP address part of the AWS URL uses dashes, not dots.
-    	
+
+## Project Access
+#### IP address
+
+**`52.40.16.108`**
+
+#### SSH Port
+
+**`2200`**
+
+#### Web Application URL
+
+http://52.40.16.108/  
+
+## Softwares Installed
+
+ntp apache2 python-setuptools libapache2-mod-wsgi git pip Flask postgresql postgresql-contrib build-dep python-psycopg2 
+
+## Steps:
+
+1. 
+
+
+
+
+
 ###Development Environment :
 1. The virtual machine used/provided is Ubuntu 14.04, 32 bits.
 2. Database engine - SQLlite.
