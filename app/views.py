@@ -21,23 +21,22 @@ from flask.ext.login import current_user, login_required
 
 from flask_restful import reqparse, abort, Api, Resource
 
-from forms import form_add_categ, form_add_item, form_edit_item
 
-from models import Items
-from models import Cat
-from models import db
+from flask.ext.wtf import Form
+from wtforms import StringField, BooleanField, SelectField
+from wtforms.validators import DataRequired
+
 
 from functools import wraps
+from flask_sqlalchemy import SQLAlchemy
+
+from models import *
 
 app = Flask(__name__)
 
 
 app.secret_key = 'super secret key'
 app.config['SESSION_TYPE'] = 'filesystem'
-
-
-
-
 
 oauth = OAuth()
 
@@ -52,6 +51,23 @@ facebook = oauth.remote_app('facebook',
                             consumer_secret='1c404c42182566f62f75234dc27004dc',
                             request_token_params={'scope': ('email, ')}
                             )
+
+class form_add_categ(Form):
+    categ_name = StringField('categ_name', validators=[DataRequired()])
+
+
+class form_add_item(Form):
+    item_name = StringField('categ_name', validators=[DataRequired()])
+    item_desc = StringField('categ_name', validators=[DataRequired()])
+    # item_categ = StringField('categ_name', validators=[DataRequired()])
+    item_categ = SelectField('State')
+
+
+class form_edit_item(Form):
+    item_name = StringField('categ_name', validators=[DataRequired()])
+    item_desc = StringField('categ_name', validators=[DataRequired()])
+    # item_categ = StringField('categ_name', validators=[DataRequired()])
+    # item_categ = SelectField('State', choices=categs)
 
 
 @facebook.tokengetter
@@ -435,4 +451,5 @@ api.add_resource(All_Items, '/all_items.json')
 # api.add_resource(All_Categories, '/all_categories.json')
 
 # Needs to be '0.0.0.0' for it to be accessing on host when run on vagrant.
-app.run(host='0.0.0.0', debug=True)
+if __name__ == '__main__':
+	app.run(host='0.0.0.0', debug=True)

@@ -4,7 +4,7 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 app = Flask(__name__)
 # from views import app
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////tmp/test1.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://catalog:linuxconfig@localhost/catalog2'
 db = SQLAlchemy(app)
 
 
