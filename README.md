@@ -1,4 +1,4 @@
-###*******************LINUXCONFIG******************
+											#LINUXCONFIG
 
 ###             Fifth project as part of the Udacity/Google - Full Stack Web Developer - Nanodegree
  
@@ -83,27 +83,31 @@ ntp apache2 python-setuptools libapache2-mod-wsgi git pip Flask postgresql postg
 		5. `sudo nano /etc/ssh/sshd_config` and change `PasswordAuthentication yes` to `PasswordAuthentication no`
 		6. To resolve the `sudo: unable to resolve host...` warning, 
 			1. `sudo nano /etc/hosts` and modify it to 
-				```52.40.16.108 @ip-10-20-24-202
-				   127.0.0.1 localhost
+				```
+				52.40.16.108 @ip-10-20-24-202
+				127.0.0.1 localhost
 				```
 		7. Server can be logged into as `grader` using `ssh -i /path to/id_rsa grader@52.40.16.108 -p 2200` without the need for password.
 6. To configure the firewall,
 	1. Ensure the firewall is inactive using `sudo ufw status`
 	2. Everything is set to `deny` using `sudo ufw default deny incoming`. Only the ones that are needed are allowed. This provides additional security to the server.
 	3. Allowing only the ones specified by Udacity 
+
 		1. `sudo ufw allow 2200/tcp`
 		2. `sudo ufw allow 80/tcp`
 		3. `sudo ufw allow 123/udp`
+	
 	4. Enable the firewall `sudo ufw enable`
 7. Installing apache and mod_wsgi:
 	1. `sudo apt-get install apache2` visit `http://52.40.16.108` to confirm that it worked.
 	2. `sudo apt-get install python-setuptools libapache2-mod-wsgi` 
 	3. `.conf` file points to `.wsgi` which in turn points to the file that has `app = Flask(__name__)`.
-		1. `sudo nano /etc/apache2/sites-available/000-default.conf` and modify it to include `WSGIScriptAlias / /var/www/linuxconfig/trial.wsgi` 
+		a. `sudo nano /etc/apache2/sites-available/000-default.conf` and modify it to include `WSGIScriptAlias / /var/www/linuxconfig/trial.wsgi` 
 
 		`sudo a2ensite 000-default.conf` to enable the site. 
 
-		2. `sudo nano /path/to/trial.wsgi` and modify it to include 
+		b. `sudo nano /path/to/trial.wsgi` and modify it to include 
+
 
 		```python
 		#!/user/bin/python
@@ -115,7 +119,7 @@ ntp apache2 python-setuptools libapache2-mod-wsgi git pip Flask postgresql postg
 		from views import app as application
 			application.secret_key = 'Add your secret key'
 		```
-		3. A dummy file can be returned to check if everything is working fine(before deploying the actual flask app) by pointing the `wsgi` file to it. The dummy file can contain the below content: 
+		c. A dummy file can be returned to check if everything is working fine(before deploying the actual flask app) by pointing the `wsgi` file to it. The dummy file can contain the below content: 
 
 		```python
 		from flask import Flask
@@ -175,6 +179,7 @@ ntp apache2 python-setuptools libapache2-mod-wsgi git pip Flask postgresql postg
 	2. configure 
 		```
 		git config --global user.name "YOUR NAME"
+
 		git config --global user.email "YOUR EAMIL"
 		```
 	3. `git clone https://github.com/jayarajsajjanar/path/to the/repo`
