@@ -69,6 +69,9 @@ Flask
 postgresql
 postgresql-contrib build-dep python-psycopg2 
 
+## Sources made use of:
+https://discussions.udacity.com/t/p5-how-i-got-through-it/15342/12
+
 ## Configuration steps followed:
 
 1. To access the Amazon EC2 instance, Private key was downloaded from 'https://www.udacity.com/account#!/development_environment'. And the steps provided there were followed. 
@@ -154,6 +157,7 @@ postgresql-contrib build-dep python-psycopg2
 	2. `sudo apt-get install python-setuptools libapache2-mod-wsgi` 
 
 	3. `.conf` file points to `.wsgi` which in turn points to the file that has `app = Flask(__name__)`.
+		
 		a. `sudo nano /etc/apache2/sites-available/000-default.conf` and modify it to include `WSGIScriptAlias / /var/www/linuxconfig/trial.wsgi` 
 
 		`sudo a2ensite 000-default.conf` to enable the site. 
