@@ -1,4 +1,4 @@
-###*******************linuxconfig******************
+###*******************LINUXCONFIG******************
 
 ###             Fifth project as part of the Udacity/Google - Full Stack Web Developer - Nanodegree
  
@@ -12,7 +12,7 @@
 
 ###About Project:
 1. This project aims to deploy the flask application built as part of the third project of FSND(https://github.com/jayarajsajjanar/catalog) on the Amazon EC2 linux instance provided by Udacity. 
-2. The below configurations steps specified by Udacity as per (https://docs.google.com/document/d/1J0gpbuSlcFa2IQScrTIqI6o3dice-9T7v8EDNjJDfUI/pub?embedded=true) were carried out. 
+2. The below configurations steps specified by Udacity as per (https://docs.google.com/document/d/1J0gpbuSlcFa2IQScrTIqI6o3dice-9T7v8EDNjJDfUI/pub?embedded=true) were carried out to complete the project. 
 
 	    a)Launch your Virtual Machine with your Udacity account and log in. You can manage your virtual server at: https://www.udacity.com/account#!/development_environment
 	    b)Create a new user named grader and grant this user sudo permissions.
@@ -44,9 +44,33 @@ http://52.40.16.108/
 
 ntp apache2 python-setuptools libapache2-mod-wsgi git pip Flask postgresql postgresql-contrib build-dep python-psycopg2 
 
-## Steps:
+## Configuration steps followed:
 
-1. 
+1. To access the Amazon EC2 instance, Private key was downloaded from 'https://www.udacity.com/account#!/development_environment'. And the steps provided there were followed. 
+	a. `mv ~/Downloads/udacity_key.rsa ~/.ssh/`
+	b. `chmod 600 ~/.ssh/udacity_key.rsa`
+	c. `ssh -i ~/.ssh/udacity_key.rsa root@52.40.16.108`
+2. New user was added and sudo permission was given. 
+	`adduser grader`
+	`visudo` 
+		root ALL=(ALL:ALL) ALL
+    	grader ALL=(ALL:ALL) ALL
+3. To update all currently installed packages.
+	`sudo apt-get update`
+	`sudo apt-get upgrade`
+4. To configure local time zone to UTC.
+	`sudo dpkg-reconfigure tzdata` select UTC.
+5. To change the SSH port from 22 to 2200.
+	On the server 
+	`sudo nano /etc/ssh/sshd_config` 
+		a. Change Port 22 to Port 2200.`
+		b. Change `PermitRootLogin without-password` to `PermitRootLogin no`
+		c. Change `PasswordAuthentication no` to `PasswordAuthentication yes`. This allows access to the server via password.
+		d. Add `UseDNS no` and `AllowUsers grader`. 
+		e. `ctrl+x, y and enter` to save the changes in nano editor.
+		f. `sudo service ssh restart`
+
+
 
 
 
