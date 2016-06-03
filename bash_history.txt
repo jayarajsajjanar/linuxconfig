@@ -1,0 +1,445 @@
+eit
+exit
+mkdir .ssh
+touch .ssh/authorized_keys
+exit
+sudo nano .ssh/authorized_keys
+chmod 700 .ssh
+chmod 644 .ssh/authorized_keys
+sudo nano /etc/ssh/sshd_config
+sudo nano /etc/hostname
+sudo ufw status
+sudo ufw default deny incoming
+sudo ufw allow 2200/tcp
+sudo ufw allow 80/tcp
+sudo ufw allow 123/udp
+sudo ufw enable
+exit
+ls
+exit
+sudo nano /etc/ssh/sshd_config
+sudo nano /etc/hostname
+sudo nano /etc/hosts
+sudo shutdown -r 0
+sudo nano /var/log/apache2/error.log
+cat /var/log/apache2/error.log
+sudo ufw status
+sudo dpkg-reconfigure tzdata
+sudo apt-get install ntp
+sudo apt-get install apache2
+sudo apt-get install python-setuptools libapache2-mod-wsgi
+cd /var/www/
+ls
+cd html/
+ls
+sudo nano index.html 
+cd ..
+sudo mkdir trial
+cd trial/
+sudo nano wsgi.py
+sudo nano __init__.py
+cd ..
+ls
+sudo apt-get install git
+git clone https://github.com/jayarajsajjanar/catalog.git
+sudo git clone https://github.com/jayarajsajjanar/catalog.git
+ls
+cd catalog/
+ls
+sudo nano requirements.txt 
+sudo apt-get install pip
+sudo apt-get install python-pip
+pip install -r requirements.txt 
+sudo nano requirements.txt 
+sudo nano /etc/apache2/sites-available/catalog.conf
+sudo service apache2 restart
+sudo apache2ctl restart
+ls
+cd ..
+ls
+cd trial/
+ls
+python __init__.py 
+pip install Flask==0.10.1
+python __init__.py 
+pip install flask
+python __init__.py 
+sudo apt-get Flask==0.10.1
+sudo apt-get Flask
+sudo apt-get install Flask==0.10.1
+sudo apt-get install Flask
+sudo apt-get install python-Flask==0.10.1
+sudo apt-get install python-Flask
+python __init__.py 
+sudo service apache2 restart
+sudo apache2ctl restart
+python __init__.py 
+sudo nano __init__.py 
+sudo python __init__.py 
+sudo service apache2 restart
+sudo apache2ctl restart
+sudo nano /etc/apache2/sites-available/catalog.conf
+sudo a2ensite catalog
+sudo service apache2 restart
+sudo apache2ctl restart
+sudo service apache2 restart
+sudo apache2ctl restart
+sudo a2enmod wsgi
+sudo nano /etc/apache2/sites-available/catalog.conf
+sudo a2ensite catalog
+sudo a2enmod catalog
+sudo apt-get install python-setuptools libapache2-mod-wsgi
+python __init__.py 
+sudo nano __init__.py 
+python __init__.py 
+sudo nano /etc/apache2/sites-enabled/catalog.conf 
+sudo service apache2 restart
+sudo apache2ctl restart
+ls
+sudo mv wsgi.py trial.wsgi
+sudo nano /etc/apache2/sites-enabled/catalog.conf
+sudo nano __init__.py 
+sudo nano trial.wsgi 
+sudo a2ensite catalog
+sudo service apache2 restart
+sudo apache2ctl restart
+cd  /etc/apache2/
+ls
+sudo nano ports.conf 
+cd sites-available/
+ls
+sudo nano 000-default.conf 
+sudo a2ensite catalog
+sudo a2ensite 000-default.conf 
+sudo service apache2 restart
+sudo apache2ctl restart
+cd /var/www/
+ls
+cd catalog/
+ls
+cd ../trial/
+cp trial.wsgi ../catalog/
+sudo cp trial.wsgi ../catalog/
+cd ../catalog/
+ls
+sudo nano run.py
+sudo nano trial.wsgi 
+cd app/
+sudo nano __init__.py
+ls
+sudo nano models.py
+sudo nano __init__.py
+cd ..
+sudo nano trial.wsgi 
+sudo nano /etc/apache2/sites-available/000-default.conf 
+sudo a2ensite 000-default.conf 
+sudo service apache2 restart
+sudo apache2ctl restart
+sudo nano /var/log/apache2/error.log
+ls
+sudo cp app/__init__.py __init__.py
+sudo nano trial.wsgi 
+sudo service apache2 restart
+sudo apache2ctl restart
+sudo nano /var/log/apache2/error.log
+sudo nano __init__.py 
+sudo nano ../trial/__init__.py 
+sudo nano trial.wsgi 
+sudo service apache2 restart
+sudo apache2ctl restart
+ls
+sudo nano run.py
+sudo nano __init__.py 
+sudo nano run.py
+sudo service apache2 restart
+sudo apache2ctl restart
+sudo nano /var/log/apache2/error.log
+sudo apt-get purge Flask
+sudo apt-get purge python-Flask
+pip install flask
+ls
+python run.py
+pip install python-flask
+sudo pip install Flask
+python run.py
+pip install flask_outh
+pip install python-flask_outh
+pip install Flask_outh
+pip install Flask-OAuth
+python run.py
+sudo pip install Flask_Oauth
+python run.py
+ls
+sudo pip install -r requirements.txt 
+python run.py
+sudo pip install flask.ext.login
+sudo pip install Flask-Login
+python run.py
+sudo pip install Flask-Restful
+python run.py
+sudo pip install Flask-Wtf
+python run.py
+sudo pip install Flask-Sqlalchemy
+python run.py
+ls
+cd app/
+ls
+python db_create.py 
+cd ..
+python run.py
+sudo service apache2 restart
+sudo apache2ctl restart
+sudo nano /var/log/apache2/error.log
+sudo nano run.py
+sudo cp __init__.py __init__temp.py
+sudo cp ../trial/__init__.py __init__.py 
+sudo nano trial.wsgi 
+sudo service apache2 restart
+sudo apache2ctl restart
+sudo nano __init__
+sudo nano __init__.py 
+sudo nano run.py
+sudo nano __init__.py 
+sudo cp -rf app aaa
+sudo nano __init__.py 
+sudo nano run.py
+sudo service apache2 restart
+sudo apache2ctl restart
+sudo nano __init__
+sudo nano __init__.py 
+sudo service apache2 restart
+sudo apache2ctl restart
+sudo nano __init__.py 
+sudo nano aaa/models.py
+sudo nano __init__.py 
+sudo nano aaa/models.py
+sudo nano __init__.py 
+python run.py
+sudo service apache2 restart
+sudo apache2ctl restart
+sudo nano run.py
+sudo nano __init__
+sudo nano __init__.py 
+python __init__
+python __init__.py 
+sudo nano __init__.py 
+python run.py
+python __init__.py 
+sudo nano __init__.py 
+python __init__.py 
+sudo service apache2 restart
+sudo apache2ctl restart
+sudo nano /var/log/apache2/error.log
+sudo nano __init__.py 
+ls
+cd app/
+ls
+cd templates/
+ls
+exit
+cd /var/www/
+ls
+cd trial/
+ls
+cd..
+cd ..
+ls
+git clone https://github.com/jayarajsajjanar/linuxconfig.git
+sudo git clone https://github.com/jayarajsajjanar/linuxconfig.git
+cd linuxconfig/
+ls
+cd ../catalog/
+ls
+sudo nano run.py
+sudo nano trial.wsgi 
+cd app 
+ls
+cd ../../linuxconfig/
+sudo cp ../catalog/trial.wsgi .
+ls
+git fetch origin master
+sudo git fetch origin master
+ls
+cd ..
+ls
+sudo rm -am linuxconfig/
+git clone https://github.com/jayarajsajjanar/linuxconfig.git
+sudo git clone https://github.com/jayarajsajjanar/linuxconfig.git
+ls
+sudo rm -rm linuxconfig/
+sudo rm -rf linuxconfig/
+ls
+sudo git clone https://github.com/jayarajsajjanar/linuxconfig.git
+cd linuxconfig/
+ls
+cd app/
+ls
+sudo nano views.py
+python db_create.py 
+cd ../../catalog/
+ls
+cd app/
+ls
+cd ..
+ls
+sudo cp trial.wsgi ../linuxconfig/
+ls
+cd ../linuxconfig/
+sudo nano trial.wsgi 
+sudo nano /etc/apache2/sites-available/000-default.conf 
+sudo service apache2 restart
+sudo apache2ctl restart
+sudo nano /var/log/apache2/error.log
+sudo nano /etc/apache2/sites-available/000-default.conf
+sudo service apache2 restart
+sudo apache2ctl restart
+sudo nano /var/log/apache2/error.log
+sudo nano app/views.py
+sudo service apache2 restart
+sudo apache2ctl restart
+sudo nano /var/log/apache2/error.log
+sudo nano app/views.py
+sudo service apache2 restart
+sudo apache2ctl restart
+sudo nano /var/log/apache2/error.log
+sudo nano app/views.py
+sudo service apache2 restart
+sudo apache2ctl restart
+sudo nano /var/log/apache2/error.log
+sudo nano app/views.py
+sudo service apache2 restart
+sudo apache2ctl restart
+sudo nano /var/log/apache2/error.log
+sudo nano app/views.py
+sudo service apache2 restart
+sudo apache2ctl restart
+sudo nano /var/log/apache2/error.log
+sudo nano /etc/apache2/sites-available/catalog.conf
+sudo nano /etc/apache2/sites-available/000-default.conf 
+cd /var/www/
+ls
+cd trial/
+ls
+sudo nano __init__.py 
+sudo nano /etc/apache2/sites-available/000-default.conf 
+sudo service apache2 restart
+sudo apache2ctl restart
+sudo nano /etc/apache2/sites-available/000-default.conf
+sudo service apache2 restart
+sudo apache2ctl restart
+sudo nano /etc/apache2/sites-available/000-default.conf
+sudo apache2ctl restart
+sudo service apache2 restart
+sudo nano ../catalog/app/views.py
+sudo apache2ctl restart
+sudo service apache2 restart
+sudo nano ../catalog/app/views.py
+sudo apache2ctl restart
+sudo service apache2 restart
+python
+sudo nano ../catalog/app/views.py
+sudo service apache2 restart
+sudo apache2ctl restart
+sudo nano /var/log/apache2/error.log
+sudo nano ../catalog/app/views.py
+cd ..
+ls
+cd linuxconfig/
+ls
+cd ../catalog/
+ls
+sudo nano run.py
+sudo nano trial.wsgi 
+sudo nano /etc/apache2/sites-available/000-default.conf
+cd ..
+cd linuxconfig/
+ls
+cd app/
+ls
+sudo nano views.py
+sudo nano /etc/apache2/sites-available/000-default.conf
+sudo service apache2 restart
+sudo apache2ctl restart
+sudo nano views.py
+sudo service apache2 restart
+sudo apache2ctl restart
+sudo nano /var/log/apache2/error.log
+ls
+cd ..
+ls
+sudo nano trial.wsgi 
+sudo nano /etc/apache2/sites-available/000-default.conf
+sudo apache2ctl restart
+sudo service apache2 restart
+sudo apt-get install postgresql postgresql-contrib
+sudo nano /etc/postgresql/9.3/main/pg_hba.conf
+cd app 
+sudo nano views.py
+ls
+python db_create.py 
+sudo apache2ctl restart
+sudo service apache2 restart
+sudo nano /var/log/apache2/error.log
+sudo nano views.py
+sudo adduser catalog
+sudo su - postgres
+python db_create.py 
+psql
+sudo su - postgres
+sudo nano views.py
+sudo nano db_create.py 
+sudo nano models.py
+sudo nano db_create.py 
+python db_create.py 
+sudo apt-get install postgresql postgresql-contrib
+sudo apt-get build-dep python-psycopg2
+pip install psycopg2 
+python db_create.py 
+ls
+sudo nano views.py
+sudo nano models.py
+ls
+python db_create.py 
+sudo nano db_create.py 
+python db_create.py 
+sudo nano db_create.py 
+python db_create.py 
+sudo nano models.py
+python db_create.py 
+sudo pip install psycopg2
+python db_create.py 
+ls
+sudo su -postgres
+sudo su - postgres
+sudo nano models.py
+sudo su - postgres
+sudo nano models.py
+python db_create.py 
+sudo nano models.py
+python db_create.py 
+psql
+sudo su - postgres
+sudo service apache2 restart
+sudo apache2ctl restart
+sudo service apache2 restart
+sudo apache2ctl restart
+python db_create.py 
+cd /var/www/catalog/
+ls
+cd app/
+ls 
+sudo nano db_create.py 
+python db_create.py 
+sudo service apache2 restart
+sudo apache2ctl restart
+ls
+sudo nano models.py
+cd ..
+ls
+cd ..
+cd linuxconfig/
+ls
+cd app/
+ls
+sudo nano models.py
+python db_create.py 
