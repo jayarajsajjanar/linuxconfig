@@ -69,11 +69,11 @@ ntp apache2 python-setuptools libapache2-mod-wsgi git pip Flask postgresql postg
 		5. `ctrl+x, y and enter` to save the changes in nano editor.
 		6. `sudo service ssh restart`
 		7. server can be connected to by `ssh grader@52.40.16.108 -p 2200`. Exiting to local can be done by `exit`.
-	2. On the local machine, generate public/private key pair using `ssh-keygen`. The private key provided by Udacity was for the user `root`. The key pair generated now is used to connect to the server as the user `grader`. For additional security password is asked for the private key. (password for securing the key, not for accessing the server)
+	2. On the local machine, generate public/private key pair using `ssh-keygen`. The private key provided by Udacity was for  the user `root`. The key pair generated now is used to connect to the server as the user `grader`. For additional security password is asked for the private key. (password for securing the key, not for accessing the server)
 
-	The key pair is placed in the same location as the project(or any other place).  
+	   The key pair is placed in the same location as the project(or any other place).  
 
-	Out of the 2 keys, one is private and the other is public. The contents of the generated public key(the one with .pub) is placed on the server and the private key is used to login from the local. The private key is shared with Udacity evaluators while submitting the project. 
+	    Out of the 2 keys, one is private and the other is public. The contents of the generated public key(the one with .pub) is placed on the server and the private key is used to login from the local. The private key is shared with Udacity evaluators while submitting the project. 
 
 	3. Log into the server as grader and 
 		1. `mkdir .ssh`
@@ -84,7 +84,8 @@ ntp apache2 python-setuptools libapache2-mod-wsgi git pip Flask postgresql postg
 		6. To resolve the `sudo: unable to resolve host...` warning, 
 			1. `sudo nano /etc/hosts` and modify it to 
 				```52.40.16.108 @ip-10-20-24-202
-				   127.0.0.1 localhost```
+				   127.0.0.1 localhost
+				```
 		7. Server can be logged into as `grader` using `ssh -i /path to/id_rsa grader@52.40.16.108 -p 2200` without the need for password.
 6. To configure the firewall,
 	1. Ensure the firewall is inactive using `sudo ufw status`
@@ -93,7 +94,37 @@ ntp apache2 python-setuptools libapache2-mod-wsgi git pip Flask postgresql postg
 		1. `sudo ufw allow 2200/tcp`
 		2. `sudo ufw allow 80/tcp`
 		3. `sudo ufw allow 123/udp`
-	4. Enable the firewall `sudo ufw enable`	
+	4. Enable the firewall `sudo ufw enable`
+7. Installing apache and mod_wsgi:
+	1. `sudo apt-get install apache2` visit `http://52.40.16.108` to confirm that it worked.
+	2. `sudo apt-get install python-setuptools libapache2-mod-wsgi` 
+	3. `.conf` file points to `.wsgi` which in turn points to the file that has `app = Flask(__name__)`.
+		1. `sudo nano /etc/apache2/sites-available/000-default.conf` and modify it to include `WSGIScriptAlias / /var/www/linuxconfig/trial.wsgi` 
+		2. `sudo nano /path/to/trial.wsgi` and modify it to include 
+		```
+		#!/user/bin/python
+		import sys
+		import logging
+		logging.basicConfig(stream=sys.stderr)
+		sys.path.insert(0,"/var/www/linuxconfig/app/")
+
+		from views import app as application
+			application.secret_key = 'Add your secret key'
+		```
+		3. A dummy file can be returned to check if everything is working fine by pointing the `wsgi` file to it. The dummy file can contain the below contents. 
+
+		```
+		from flask import Flask
+		app = Flask(__name__)
+		@app.route("/")
+		def hello():
+		    return "Hello, Catalog app coming up soon!"
+		if __name__ == "__main__":
+		  app.run()
+		```
+
+
+	
 
 
 
