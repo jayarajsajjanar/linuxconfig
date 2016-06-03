@@ -38,7 +38,7 @@
 
 #### Web Application URL
 
-http://52.40.16.108/  
+`http://52.40.16.108/` -- The application is accessible here. OAuth is configured for this.  
 
 ## Softwares Installed
 
@@ -100,8 +100,12 @@ ntp apache2 python-setuptools libapache2-mod-wsgi git pip Flask postgresql postg
 	2. `sudo apt-get install python-setuptools libapache2-mod-wsgi` 
 	3. `.conf` file points to `.wsgi` which in turn points to the file that has `app = Flask(__name__)`.
 		1. `sudo nano /etc/apache2/sites-available/000-default.conf` and modify it to include `WSGIScriptAlias / /var/www/linuxconfig/trial.wsgi` 
+
+		`sudo a2ensite 000-default.conf` to enable the site. 
+
 		2. `sudo nano /path/to/trial.wsgi` and modify it to include 
-		```
+
+		```python
 		#!/user/bin/python
 		import sys
 		import logging
@@ -111,40 +115,77 @@ ntp apache2 python-setuptools libapache2-mod-wsgi git pip Flask postgresql postg
 		from views import app as application
 			application.secret_key = 'Add your secret key'
 		```
-		3. A dummy file can be returned to check if everything is working fine by pointing the `wsgi` file to it. The dummy file can contain the below contents. 
+		3. A dummy file can be returned to check if everything is working fine(before deploying the actual flask app) by pointing the `wsgi` file to it. The dummy file can contain the below content: 
 
-		```
+		```python
 		from flask import Flask
 		app = Flask(__name__)
 		@app.route("/")
 		def hello():
-		    return "Hello, Catalog app coming up soon!"
+		    return "Hello world!"
 		if __name__ == "__main__":
 		  app.run()
 		```
+	4. Various softwares needed by the flask application was installed :
+
+		```
+		sudo apt-get install python-pip
+		The softwares in requirements.txt (like SQLAlchemy, Flask-Mail etc) were installed using pip. `virtualenv` can be used for it. 
+		```
+	5. After every change, apache can be restarted using 
+
+		```
+		sudo service apache2 restart
+		sudo apache2ctl restart
+		```
+8. To install and configure PostgreSQL:
+	1. `sudo apt-get install postgresql postgresql-contrib`	  `sudo apt-get build-dep python-psycopg2`
+	2. To not allow remote connections: `sudo nano /etc/postgresql/9.1/main/pg_hba.conf`. By default, the configuration is set to not allow remote connections. 
+	2. (step 9 of the main listing i.e. configuring git and cloning was done before this)New user for postgres - `catalog`. New database - `catalog`.
+		1. The original flask app used `sqllite`. The `models` file contained : 
+
+			```python 
+			app.config['SQLALCHEMY_DATABASE_URI'] = 'sqllite:///temp/test.db'
+			```
+			The above line was modified to :
+
+			```python 
+			app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://catalog:linuxconfig@localhost/catalog2'
+			``` 
+			In the above line `catalog` is the user in  the database server. `linuxconfig` is the password for the user. 
+			`catalog2` is the database. 
+		2. To correspond the above changes:
+	   		1. `sudo adduser catalog` 
+	   		2. `sudo su - postgres` postgres has admin privileges, hence it is made use of to configure `catalog` user.
+	   		3. `psql` to connect to the database server. 
+	   		4. In the server 
+	   			1. `CREATE USER catalog WITH PASSWORD 'linuxconfig';`
+	   			2. `ALTER USER catalog CREATEDB;` - `catalog` is given permissions to create databases.
+	   			3. `\du` is used to know the roles of users.
+	   			4. `CREATE DATABASE catalog WITH OWNER catalog;`
+	   			5. `\c catalog` - connect to the user.
+	   			6. `REVOKE ALL ON SCHEMA public FROM public;`
+	   			7. `GRANT ALL ON SCHEMA public TO catalog;`
+	   			8. `\q` and `exit` to return to user `grader`.
+	   	3. `python db_create.py` to instantiate the bare minimum. And restart apache. Visit `http://52.40.16.108`. 
+	   	4. Connect to postgres and to the `catalog` database and hit `\dt` to ensure that the relations were created
+	   	    and instantiated.
+9. to configure git and clone the repo of project 3 of FSND:
+	1. `sudo apt-get install git`
+	2. configure 
+		```
+		git config --global user.name "YOUR NAME"
+		git config --global user.email "YOUR EAMIL"
+		```
+	3. `git clone https://github.com/jayarajsajjanar/path/to the/repo`
+	4.  To ensure .git directory is not publicly accessible via a browser:
+		1. `sudo nano .htaccess` and add `RedirectMatch 404 /\.git` to the file.
+10. The project is accessible at `http://52.40.16.108`. The OAuth must be configured to serve at the corresponding url. 
+	i.e. earlier(original project 3) facebook authentication was available at `localhost:5000`. This needs to be changed to 
+	`http://52.40.16.108`
 
 
-	
 
-
-
-
-
-
-###Development Environment :
-1. The virtual machine used/provided is Ubuntu 14.04, 32 bits.
-2. Database engine - SQLlite.
-3. Python 2.7.3
-4. Flask framework, ORM -> Flask_SQLAlchemy, Template Engine - Jinja2, Forms - WTF
-
-###Steps for running the project:
-1. **Clone** the repo of the current project using - `git clone https://github.com/jayarajsajjanar/catalog.git` 
-2.  Use virtualenv and the requirements.txt provided to install necessary libraries and softwares.
-3.  Need to have facebook login details for editing/deleting. (Oauth is provided for Facebook only)
-2. `cd app` and then  `python db_create.py` to create the database and to instantiate minimally required objects.
-3. `cd .` to return to parent directory. Hit `python run.py` to run the project. Visit `localhost:5000` on your browser.
-4.  Have fun adding/deleting/editing categories and items.
-5.  API endpoint is provided at `\all_items.json`
 
       
 
