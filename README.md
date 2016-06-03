@@ -53,23 +53,47 @@ ntp apache2 python-setuptools libapache2-mod-wsgi git pip Flask postgresql postg
 2. New user was added and sudo permission was given. 
 	1. `adduser grader`
 	2. `visudo` 
-		1. root ALL=(ALL:ALL) ALL
-    	2. grader ALL=(ALL:ALL) ALL
+		1. `root ALL=(ALL:ALL) ALL`
+    	2. `grader ALL=(ALL:ALL) ALL`
 3. To update all currently installed packages.
 	1. `sudo apt-get update`
 	2. `sudo apt-get upgrade`
 4. To configure local time zone to UTC.
-	1.`sudo dpkg-reconfigure tzdata` select UTC.
+	1. `sudo dpkg-reconfigure tzdata` select UTC.
 5. To change the SSH port from 22 to 2200.
-	1. On the server 
-	2. `sudo nano /etc/ssh/sshd_config` 
+	1. On the server `sudo nano /etc/ssh/sshd_config` 
 		1. Change Port 22 to Port 2200.`
 		2. Change `PermitRootLogin without-password` to `PermitRootLogin no`
 		3. Change `PasswordAuthentication no` to `PasswordAuthentication yes`. This allows access to the server via password.
 		4. Add `UseDNS no` and `AllowUsers grader`. 
 		5. `ctrl+x, y and enter` to save the changes in nano editor.
 		6. `sudo service ssh restart`
+		7. server can be connected to by `ssh grader@52.40.16.108 -p 2200`. Exiting to local can be done by `exit`.
+	2. On the local machine, generate public/private key pair using `ssh-keygen`. The private key provided by Udacity was for the user `root`. The key pair generated now is used to connect to the server as the user `grader`. For additional security password is asked for the private key. (password for securing the key, not for accessing the server)
 
+	The key pair is placed in the same location as the project(or any other place).  
+
+	Out of the 2 keys, one is private and the other is public. The contents of the generated public key(the one with .pub) is placed on the server and the private key is used to login from the local. The private key is shared with Udacity evaluators while submitting the project. 
+
+	3. Log into the server as grader and 
+		1. `mkdir .ssh`
+		2. `touch .ssh/authorized_keys`
+		3. copy and paste the contents of the public key from local to `.ssh/authorized_keys`
+		4. `chmod 700 .ssh` `chmod 644 .ssh/authorized_keys`
+		5. `sudo nano /etc/ssh/sshd_config` and change `PasswordAuthentication yes` to `PasswordAuthentication no`
+		6. To resolve the `sudo: unable to resolve host...` warning, 
+			1. `sudo nano /etc/hosts` and modify it to 
+				```52.40.16.108 @ip-10-20-24-202
+				   127.0.0.1 localhost```
+		7. Server can be logged into as `grader` using `ssh -i /path to/id_rsa grader@52.40.16.108 -p 2200` without the need for password.
+6. To configure the firewall,
+	1. Ensure the firewall is inactive using `sudo ufw status`
+	2. Everything is set to `deny` using `sudo ufw default deny incoming`. Only the ones that are needed are allowed. This provides additional security to the server.
+	3. Allowing only the ones specified by Udacity 
+		1. `sudo ufw allow 2200/tcp`
+		2. `sudo ufw allow 80/tcp`
+		3. `sudo ufw allow 123/udp`
+	4. Enable the firewall `sudo ufw enable`	
 
 
 
