@@ -1,8 +1,0 @@
-to reviewer.
-1) Import statements have been moved to the top. 
-2) Regarding secret key provided by oauth provider(facebook here), is it safe to include it in the code when hosting the code on github? Or should  I, in the future, request the reviewer/user to acquire a key by themselves and place in the code?
-3) For comments - I have added space between # and the actual comment.
-4) New descriptive names have been provided to variables. 
-5) Parameters to views =>  Your comment "Your routes mostly look like: @app.route('/all_items_in_categ.html'). We want to catch a route /catalog/items/<int:item_num> (along with params-- item_num is a param) and then pass this to the method handling the request. " ====> I implemented it using requests.args.get  
-6) @login_required feature has been added.
-7) Python code has been checked for pep8 compliance by using 'autopep8' in 'sublime text' and on 'http://pep8online.com' 
